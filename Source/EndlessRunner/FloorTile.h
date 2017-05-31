@@ -37,49 +37,40 @@ public:
 	UFUNCTION()
 	void OnEndTriggerOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
 
-	/**   */
+	/** Death again  */
 	UFUNCTION()
 	void OnHitWall(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 protected:
 	
-	/**   */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* Scene;
 
-	/**   */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* Floor;
 
-	/**   */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* Wall01;
 
-	/**   */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* Wall02;
 
-	/**   */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UArrowComponent* AttachPoint;
 
-	/**   */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UBoxComponent* EndTrigger;
 
-	/**   */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UArrowComponent* BlockerSpawnPoint01;
 
-	/**   */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UArrowComponent* BlockerSpawnPoint02;
 
-	/**   */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UArrowComponent* BlockerSpawnPoint03;
 
-	/**   */
+	/** Spawn area  */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UBoxComponent* CoinArea;
 
@@ -124,9 +115,11 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void SpawnBlocker();
 	
+	/** Spawn Coins  */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void SpawnCoins();
 
+	/**  Spawn particular Item */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void SpawnInteractableItem(UClass* ClassToSpawn);
 

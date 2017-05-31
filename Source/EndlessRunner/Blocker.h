@@ -20,11 +20,14 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+
+	/** Call when character hits this actor  */
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 	
 protected:
 	
+	/** Blocker Static Mesh */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* BlockerMesh;
 	

@@ -56,8 +56,8 @@ AEndlessRunnerCharacter::AEndlessRunnerCharacter()
 
 
 	/** Character initials  */
-	// can't turn now. Turn available only at triggers
-	bCanTurn = false;
+	
+	bCanTurn = false;	// can't turn now. Turn available only at triggers
 	bIsDead = false;    // alive
 	bIsMagneto = false; // not Magneto
 	bIsBomber = false;  // not Bomber
@@ -68,6 +68,7 @@ void AEndlessRunnerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// save initial color
 	if (EndlessRunnerMaterial)
 	{
 		EndlessRunnerMaterial->GetVectorParameterValue(FName("BodyColor"), InitialColor);
@@ -126,7 +127,7 @@ void AEndlessRunnerCharacter::Death(FHitResult Hit)
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		GetCapsuleComponent()->SetCollisionResponseToAllChannels(ECR_Ignore);
 
-		// restart level 2 sec later
+		// restart level 2.5 sec later
 		GetWorldTimerManager().SetTimer(RestartTimer, this, &AEndlessRunnerCharacter::RestartLevel, 2.5f, false);
 	}
 
@@ -248,6 +249,7 @@ void AEndlessRunnerCharacter::MoveRight(float Value)
 		AddMovementInput(Direction, Value);
 	}
 	
+	// Corner turn
 	if(bCanTurn && (Controller != NULL))
 	{
 		if (Value < 0.f)

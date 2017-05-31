@@ -34,51 +34,51 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
 
-	/**   */
+	/** Death it is  */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void Death(FHitResult Hit);
 	
-	/**   */
+	/** Returns current coins number  */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	int32 GetCoins() const { return Coins; }
 
-	/**   */
+	/** Returns passed distance  */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	float GetDistance() const { return Distance; }
 
-	/**   */
+	/** Add one Coin  */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void AddCoin() { Coins++; }
 
-	/**   */
+	/** Enable/disable turn ability   */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void SetCanTurn(bool NewCanTurn) { bCanTurn = NewCanTurn; }
 
-	/**   */
+	/** Returns can character attract coins  */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	bool IsMagneto() const { return bIsMagneto; }
 
-	/**   */
+	/** Returns can character break blockers  */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	bool IsBobmer() const { return bIsBomber; }
 
-	/**   */
+	/** Activate Magneto state */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void ActivateMagneto();
 
-	/**   */
+	/** Deactivate Magneto state */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void DeactivateMagneto();
 
-	/**   */
+	/** Activate Bomber state */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void ActivateBomber();
 
-	/**   */
+	/** Deactivate Bomber state */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void DeactivateBomber();
 
-	/**   */
+	/** Death FX, blood, decal, sound  */
 	UFUNCTION(BlueprintCallable, Category = "AAA")
 	void SpawnImpactFX(FHitResult Hit);
 
@@ -87,13 +87,11 @@ protected:
 	/** Called in Tick() */
 	void MoveForward();
 
-	/**  */
 	void MoveRight(float Value);
 
 	/** if we should to turn now, perform it in Tick  */
 	void TurnCorner(float DeltaSeconds);
 
-	/**   */
 	void RestartLevel();
 	
 	/** Character's rotation speed at the corner  */
@@ -169,17 +167,22 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	float Distance = 0.f;
 
+	/** Calculate Distance  */
 	void CalcDistance(float DeltaSeconds);
 
+	/** Dynamic Material reference  */
 	UPROPERTY(Meta = (BlueprintProtected = "true"), VisibleAnywhere, BlueprintReadWrite, Category = "AAA")
 	UMaterialInstanceDynamic* EndlessRunnerMaterial;
 
+	/** Color in Magneto state */
 	UPROPERTY(Meta = (BlueprintProtected = "true"), EditAnywhere, BlueprintReadWrite, Category = "AAA")
 	FLinearColor MagnetoColor = FLinearColor(0.f, 0.091f, 1.f, 1.f);
 
+	/**  Color in Bomber state */
 	UPROPERTY(Meta = (BlueprintProtected = "true"), EditAnywhere, BlueprintReadWrite, Category = "AAA")
 	FLinearColor BomberColor = FLinearColor(1.f, 0.31f, 0.f, 1.f);
 	
+	/** Initial character color  */
 	FLinearColor InitialColor;
 
 protected:

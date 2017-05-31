@@ -15,7 +15,7 @@ void AEndlessRunnerGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	for (uint8 Count = 0; Count < InitialTilesNumber; Count++)
+	for (int32 Count = 0; Count < InitialTilesNumber; Count++)
 	{
 		AddFloorTile();
 	}
@@ -52,6 +52,7 @@ void AEndlessRunnerGameMode::AddForwardFloorTile()
 		SpawnParams.Owner = this;
 		SpawnParams.Instigator = Instigator;
 
+		/** assume FloorTiles[0] - forward tile  */
 		AFloorTile* FloorTile = World->SpawnActor<AFloorTile>(FloorTiles[0], NextSpawnpoint, SpawnParams);
 
 		if (FloorTile)

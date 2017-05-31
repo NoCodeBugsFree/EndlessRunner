@@ -60,6 +60,8 @@ void AFloorTile::BeginPlay()
 	// kill character
 	Wall01->OnComponentHit.AddDynamic(this, &AFloorTile::OnHitWall);
 	Wall02->OnComponentHit.AddDynamic(this, &AFloorTile::OnHitWall);
+
+	// GC
 	EndTrigger->OnComponentBeginOverlap.AddDynamic(this, &AFloorTile::OnEndTriggerOverlapBegin);
 }
 
@@ -71,6 +73,7 @@ void AFloorTile::OnConstruction(const FTransform& Transform)
 
 	int32 RandomInt = FMath::RandRange(1, 10);
 
+	/** TODO customizable spawning probability  */
 	switch (RandomInt)
 	{
 	case 1: 
@@ -228,6 +231,7 @@ void AFloorTile::OnEndTriggerOverlapBegin(UPrimitiveComponent* OverlappedCompone
 					BlockerReference->SetLifeSpan(3.f);
 				}
 
+				/** Destroy all items */
 				for (AActor* Item : Items)
 				{
 					if (Item && !Item->IsPendingKill())

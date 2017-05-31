@@ -34,8 +34,6 @@ protected:
 	/** Visual mesh  */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* ItemMesh;
-
-	
 	
 	/** Item Rotating Movement  */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))

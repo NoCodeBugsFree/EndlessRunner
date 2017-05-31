@@ -39,6 +39,7 @@ private:
 	UPROPERTY(meta = (ClampMin = 2, ClampMax = 10),  EditAnywhere, BlueprintReadWrite, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	int32 MinForwardTiles = 5;
 
+	/** Current Tiles Forward  */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	int32 CurrentTilesForward = 0;
 
@@ -50,9 +51,11 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AAA", meta = (AllowPrivateAccess = "true", ClampMin = 3, ClampMax = 50))
 	uint8 InitialTilesNumber = 10;
 	
+	/** Widget Class  */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<class UUserWidget> HUDWidgetClass;
 	
+	/** Current Widget  */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AAA", meta = (AllowPrivateAccess = "true"))
 	class UUserWidget* CurrentWidget;
 	
